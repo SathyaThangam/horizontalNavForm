@@ -1,0 +1,301 @@
+ 
+<mat-horizontal-stepper [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="firstFormGroup" label="Step 1">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Personal Information</ng-template>
+      <mat-form-field >
+        <input matInput 
+              type = "text" 
+              placeholder="Student name" 
+              ngModel={{detail.name}}  
+              formControlName="studentNameCtrl" 
+              pattern="^[a-zA-Z]+$"
+              required>
+
+              <mat-error *ngIf="firstFormGroup.controls['studentNameCtrl'].hasError('required')">
+                Student Name is required 
+              </mat-error>
+
+
+              <mat-error *ngIf="firstFormGroup.controls['studentNameCtrl'].hasError('pattern')">
+                Student Name is invalid
+              </mat-error>
+        
+      </mat-form-field>
+
+
+      <br>
+      <mat-form-field>
+        <input matInput 
+               type= "text" 
+               placeholder="Father's name" 
+               ngModel={{detail.father}} 
+               formControlName="fatherNameCtrl" 
+               pattern="^[a-zA-Z]+$"
+               required>
+
+
+              <mat-error *ngIf="firstFormGroup.controls['fatherNameCtrl'].hasError('required')">
+                Father's Name is required 
+              </mat-error>
+
+
+              <mat-error *ngIf="firstFormGroup.controls['fatherNameCtrl'].hasError('pattern')">
+                Father's Name is invalid
+              </mat-error>
+       
+      </mat-form-field>
+
+
+      <br>
+      <mat-form-field>
+        <input matInput 
+               type= "text" 
+               placeholder="Mother's name" 
+               ngModel={{detail.mother}} 
+               formControlName="motherNameCtrl" 
+               pattern="^[a-zA-Z]+$"
+               required>
+
+
+              <mat-error *ngIf="firstFormGroup.controls['motherNameCtrl'].hasError('required')">
+                Mother's Name is required 
+              </mat-error>
+              
+
+              <mat-error *ngIf="firstFormGroup.controls['motherNameCtrl'].hasError('pattern')">
+                Mother's Name is invalid
+              </mat-error>
+       
+       
+      </mat-form-field>
+      
+      
+      <div>
+        <button mat-raised-button 
+                matStepperNext 
+                class = "firstButton" 
+                (click) = "handleFirstForm()">Next</button>
+
+        <button mat-raised-button 
+                (click)="handleFirstSave()" 
+                class = "secondButton" 
+                [disabled]="detail.flag === 0"> Save and Submit </button>
+      </div>
+
+    </form>
+  </mat-step>
+
+
+   
+  <mat-step [stepControl]="secondFormGroup" label="Step 2">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Other Information</ng-template>
+
+     
+      <mat-form-field>
+        <input matInput 
+               type = "number" 
+               min= '1'
+               max='100' 
+               maxlength="2" 
+               placeholder="Age" 
+               pattern="^[1-9][0-9]?$|^100$"
+               formControlName="ageCtrl" 
+               ngModel={{detail.age}} 
+               required>
+ 
+              <mat-error *ngIf="secondFormGroup.controls['ageCtrl'].hasError('required')">
+                Age is required 
+              </mat-error>
+
+              <mat-error *ngIf="secondFormGroup.controls['ageCtrl'].hasError('pattern')">
+                Age is invalid
+              </mat-error>
+  
+      </mat-form-field>
+
+      <br>
+      <mat-form-field>
+        <input matInput 
+               type = "date" 
+               placeholder="Date Of Birth" 
+               formControlName="dobCtrl" 
+               ngModel={{detail.dob}} 
+               required>
+
+
+              <mat-error *ngIf="secondFormGroup.controls['dobCtrl'].hasError('required')">
+                Date-of-birth is required 
+              </mat-error>
+       
+      </mat-form-field>
+
+      <br>
+      <mat-form-field>
+        <input matInput 
+               type = "text" 
+               placeholder="Nationality" 
+               ngModel={{detail.nationality}} 
+               formControlName="nationalityCtrl" 
+               pattern="^[a-zA-Z]+$"
+               required>
+
+
+              <mat-error *ngIf="secondFormGroup.controls['nationalityCtrl'].hasError('required')">
+                Nationality is required 
+              </mat-error>
+
+
+              <mat-error *ngIf="secondFormGroup.controls['nationalityCtrl'].hasError('pattern')">
+                Nationality is invalid
+              </mat-error>
+       
+      </mat-form-field>
+
+      <div>
+        <button mat-raised-button 
+                matStepperPrevious 
+                class = "firstButton">Back</button>
+
+        <button mat-raised-button 
+                matStepperNext 
+                class = "secondButton" 
+                (click) = "handleSecondForm()">Next</button>
+
+        <button mat-raised-button 
+                (click)="handleSecondSave()" 
+                class = "secondButton" 
+                [disabled]="detail.flag === 0"> Save and Submit </button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="thirdFormGroup" label="Step 3">
+    <form [formGroup]="thirdFormGroup">
+      <ng-template matStepLabel>Contact Information</ng-template>
+      <mat-form-field>
+        <input matInput 
+               type= "email" 
+               placeholder="Email " 
+               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" 
+               size="30" 
+               ngModel={{detail.email}}  
+               formControlName="emailCtrl" 
+               required>
+
+
+              <mat-error *ngIf="thirdFormGroup.controls['emailCtrl'].hasError('required')">
+                Email is required 
+              </mat-error>
+
+
+              <mat-error *ngIf="thirdFormGroup.controls['emailCtrl'].hasError('pattern')">
+                Email is invalid
+              </mat-error>
+       
+      </mat-form-field>
+
+      <br>
+      <mat-form-field>
+        <input matInput 
+               type= "tel" 
+               placeholder="Phone number" 
+               pattern="[0-9]{10}" 
+               ngModel={{detail.phone}} 
+               formControlName="phoneCtrl" 
+               required>
+
+
+              <mat-error *ngIf="thirdFormGroup.controls['phoneCtrl'].hasError('required')">
+                Phone number is required 
+              </mat-error>
+
+              <mat-error *ngIf="thirdFormGroup.controls['phoneCtrl'].hasError('pattern')">
+                Phone number is invalid
+              </mat-error>
+       
+      </mat-form-field>
+
+      <div>
+        <button mat-raised-button 
+                matStepperPrevious 
+                class = "firstButton">Back</button>
+
+        <button mat-raised-button 
+                matStepperNext 
+                class = "secondButton" 
+                (click) = "handleThirdForm()">Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step label="Step 4">
+    <ng-template matStepLabel>Application</ng-template>
+    <div>
+     
+     
+      <table>
+        <strong> <label> PERSONAL INFORMATION </label> </strong> 
+        <button mat-raised-button class="firstEdit" (click)="move(0)">Edit </button>
+        <tbody>
+           <tr>
+               <strong> <td> Student Name:  </td> </strong> 
+               <td>{{detail.name}} </td> 
+           </tr>
+           <tr>
+               <strong> <td> Father's Name:  </td> </strong> 
+              <td>{{detail.father}} </td> 
+          </tr>
+          <tr>
+               <strong> <td> Mother's Name:  </td></strong> 
+              <td>{{detail.mother}} </td> 
+          </tr>
+
+        </tbody>
+      </table> 
+      <br> <br>
+
+        
+      <table>
+          <strong> <label> OTHER INFORMATION </label> </strong> 
+          <button mat-raised-button class = "secondEdit" (click)="move(1)">Edit </button>
+          <tbody>
+             <tr>
+                 <strong> <td> Age:  </td> </strong> 
+                 <td>{{detail.age}} </td> 
+             </tr>
+             <tr>
+                <strong><td> Date of birth:  </td> </strong> 
+                <td>{{detail.dob}} </td> 
+            </tr>
+            <tr>
+                <strong><td> Nationality:  </td> </strong> 
+                <td>{{detail.nationality}} </td> 
+            </tr>
+  
+          </tbody>
+        </table>
+        <br> <br>
+
+        
+        <table>
+            <strong><label> CONTACT INFORMATION</label> </strong> 
+            <button mat-raised-button class="thirdEdit" (click)="move(2)">Edit </button>
+            <tbody>
+               <tr>
+                   <strong><td> Email-id:  </td> </strong> 
+                   <td>{{detail.email}} </td> 
+               </tr>
+               <tr>
+                  <strong><td> Phone number:  </td> </strong> 
+                  <td>{{detail.phone}} </td> 
+              </tr>
+              
+    
+            </tbody>
+          </table>
+  
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>

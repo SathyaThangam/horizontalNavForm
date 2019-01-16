@@ -1,0 +1,18 @@
+.headertag
+{
+    background-color: rgb(220, 220, 236);
+    /* background-color: white; */
+    height: 100px;
+    border-style: groove;
+    border-width: 2px;
+    border-color: rgb(152, 152, 233);
+   
+}
+
+
+.logotag
+{
+    height: 100px;
+    width: 90px;
+    margin-left: 2px;
+}

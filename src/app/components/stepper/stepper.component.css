@@ -1,0 +1,46 @@
+
+body { 
+    font-family: Roboto, Arial, sans-serif;
+    margin: 0;
+  }
+  
+  .basic-container {
+    padding: 30px;
+  }
+  
+  .version-info {
+    font-size: 8pt;
+    float: right;
+  }
+ 
+  .firstButton
+  {
+     margin-left: 40px;
+     background-color: rgb(152, 152, 233);
+     
+  }
+
+  .secondButton
+  {
+     margin-left: 20px;
+     background-color: rgb(152, 152, 233);
+  }
+
+  .firstEdit
+  {
+   margin-left: 10px;
+   background-color: rgb(152, 152, 233);
+  }
+
+  .secondEdit
+  {
+     margin-left: 45px;
+     background-color: rgb(152, 152, 233);
+  }
+
+  .thirdEdit
+  {
+     margin-left: 30px;
+     background-color: rgb(152, 152, 233);
+
+  }
